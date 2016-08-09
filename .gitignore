@@ -18,3 +18,7 @@ hs_err_pid*
 # app
 src/main/webapp/node_modules
 src/main/webapp/typings
+
+#eclipse
+/.project/
+/target/
