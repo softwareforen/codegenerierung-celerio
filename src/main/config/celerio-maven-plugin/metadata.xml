@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xmlns="http://www.jaxio.com/schema/celerio">
+  <jdbcConnectivity driver="org.h2.Driver" url="jdbc:h2:C:\Dev\2016 Codegenerierung\VA-Rep for Blog\codegenerierung-celerio\target/db/angular-lab;MVCC=TRUE;FILE_LOCK=NO" user="my-sfl-app" password="my-sfl-app" schemaName="" tableNamePattern="%" oracleRetrieveRemarks="false" oracleRetrieveSynonyms="true" reverseIndexes="true" reverseOnlyUniqueIndexes="true" catalog="">
+    <tableTypes>
+      <tableType>TABLE</tableType>
+    </tableTypes>
+  </jdbcConnectivity>
+  <databaseInfo databaseMajorVersion="1" databaseMinorVersion="4" databaseProductName="H2" databaseProductVersion="1.4.187 (2015-04-10)" driverMajorVersion="1" driverMinorVersion="4" driverName="H2 JDBC Driver" driverVersion="1.4.187 (2015-04-10)" extraInfo=""/>
+  <tables>
+    <table name="EVENTTYPE" type="TABLE">
+      <columns>
+        <column name="ID" columnDef="(NEXT VALUE FOR PUBLIC.SYSTEM_SEQUENCE_C5F604B2_79A3_469F_9E5A_A548A6A7BED3)" decimalDigits="0" autoIncrement="true" nullable="false" ordinalPosition="1" size="19" type="BIGINT"/>
+        <column name="NAME" decimalDigits="0" autoIncrement="false" nullable="false" ordinalPosition="2" size="63" type="VARCHAR"/>
+        <column name="AGENDA_START" decimalDigits="0" autoIncrement="false" nullable="false" ordinalPosition="3" size="63" type="VARCHAR"/>
+        <column name="AGENDA_STOP" decimalDigits="0" autoIncrement="false" nullable="false" ordinalPosition="4" size="63" type="VARCHAR"/>
+        <column name="MAIL_START" decimalDigits="0" autoIncrement="false" nullable="false" ordinalPosition="5" size="63" type="VARCHAR"/>
+        <column name="MAIL_STOP" decimalDigits="0" autoIncrement="false" nullable="false" ordinalPosition="6" size="63" type="VARCHAR"/>
+      </columns>
+      <indexes>
+        <indexe columnName="ID" indexName="PRIMARY_KEY_A" nonUnique="false"/>
+      </indexes>
+      <importedKeys/>
+      <primaryKeys>
+        <primaryKey>ID</primaryKey>
+      </primaryKeys>
+    </table>
+    <table name="ROLE" type="TABLE">
+      <columns>
+        <column name="ID" columnDef="(NEXT VALUE FOR PUBLIC.SYSTEM_SEQUENCE_AA59B085_3EC9_443B_B34A_CB3D9FD1001D)" decimalDigits="0" autoIncrement="true" nullable="false" ordinalPosition="1" size="10" type="INTEGER"/>
+        <column name="ROLE_NAME" decimalDigits="0" autoIncrement="false" nullable="false" ordinalPosition="2" size="100" type="VARCHAR"/>
+      </columns>
+      <indexes>
+        <indexe columnName="ID" indexName="PRIMARY_KEY_26" nonUnique="false"/>
+        <indexe columnName="ROLE_NAME" indexName="ROLE_UNIQUE_1_INDEX_2" nonUnique="false"/>
+      </indexes>
+      <importedKeys/>
+      <primaryKeys>
+        <primaryKey>ID</primaryKey>
+      </primaryKeys>
+    </table>
+    <table name="USER" type="TABLE" remarks="The User is a human that can connect to this web application">
+      <columns>
+        <column name="ID" columnDef="(NEXT VALUE FOR PUBLIC.SYSTEM_SEQUENCE_239A4411_A320_4353_B87B_B312EF6DF43F)" decimalDigits="0" autoIncrement="true" nullable="false" ordinalPosition="1" size="10" type="INTEGER"/>
+        <column name="LOGIN" decimalDigits="0" autoIncrement="false" nullable="false" ordinalPosition="2" remarks="The login used to login" size="100" type="VARCHAR"/>
+        <column name="PASSWORD" decimalDigits="0" autoIncrement="false" nullable="false" ordinalPosition="3" size="100" type="VARCHAR"/>
+        <column name="EMAIL" decimalDigits="0" autoIncrement="false" nullable="true" ordinalPosition="4" size="100" type="VARCHAR"/>
+        <column name="IS_ENABLED" columnDef="TRUE" decimalDigits="0" autoIncrement="false" nullable="false" ordinalPosition="5" size="1" type="BOOLEAN"/>
+        <column name="CIVILITY" columnDef="MR" decimalDigits="0" autoIncrement="false" nullable="true" ordinalPosition="6" size="2" type="CHAR"/>
+        <column name="FIRST_NAME" decimalDigits="0" autoIncrement="false" nullable="true" ordinalPosition="7" size="100" type="VARCHAR"/>
+        <column name="LAST_NAME" decimalDigits="0" autoIncrement="false" nullable="true" ordinalPosition="8" size="100" type="VARCHAR"/>
+        <column name="VERSION" columnDef="0" decimalDigits="0" autoIncrement="false" nullable="true" ordinalPosition="9" size="10" type="INTEGER"/>
+      </columns>
+      <indexes>
+        <indexe columnName="ID" indexName="PRIMARY_KEY_2" nonUnique="false"/>
+        <indexe columnName="LOGIN" indexName="USER_UNIQUE_1_INDEX_2" nonUnique="false"/>
+      </indexes>
+      <importedKeys/>
+      <primaryKeys>
+        <primaryKey>ID</primaryKey>
+      </primaryKeys>
+    </table>
+    <table name="USER_ROLE" type="TABLE">
+      <columns>
+        <column name="USER_ID" decimalDigits="0" autoIncrement="false" nullable="false" ordinalPosition="1" size="10" type="INTEGER"/>
+        <column name="ROLE_ID" decimalDigits="0" autoIncrement="false" nullable="false" ordinalPosition="2" size="10" type="INTEGER"/>
+      </columns>
+      <indexes>
+        <indexe columnName="USER_ID" indexName="PRIMARY_KEY_B" nonUnique="false"/>
+        <indexe columnName="ROLE_ID" indexName="PRIMARY_KEY_B" nonUnique="false"/>
+      </indexes>
+      <importedKeys>
+        <importedKey fkColumnName="ROLE_ID" fkName="USER_ROLE_FK_2" pkColumnName="ID" pkTableName="ROLE"/>
+        <importedKey fkColumnName="USER_ID" fkName="USER_ROLE_FK_1" pkColumnName="ID" pkTableName="USER"/>
+      </importedKeys>
+      <primaryKeys>
+        <primaryKey>ROLE_ID</primaryKey>
+        <primaryKey>USER_ID</primaryKey>
+      </primaryKeys>
+    </table>
+    <table name="VAR_EVENT" type="TABLE">
+      <columns>
+        <column name="ID" columnDef="(NEXT VALUE FOR PUBLIC.SYSTEM_SEQUENCE_237B1CB0_E811_4552_8E88_9C5645E4A1A2)" decimalDigits="0" autoIncrement="true" nullable="false" ordinalPosition="1" size="19" type="BIGINT"/>
+        <column name="ABBREVIATION" decimalDigits="0" autoIncrement="false" nullable="false" ordinalPosition="2" size="15" type="VARCHAR"/>
+        <column name="STARTDAY" decimalDigits="10" autoIncrement="false" nullable="true" ordinalPosition="3" size="23" type="TIMESTAMP"/>
+        <column name="ENDDAY" decimalDigits="10" autoIncrement="false" nullable="true" ordinalPosition="4" size="23" type="TIMESTAMP"/>
+        <column name="CURRENT_STATE" decimalDigits="0" autoIncrement="false" nullable="true" ordinalPosition="5" size="10" type="INTEGER"/>
+        <column name="AGENDA_START" decimalDigits="10" autoIncrement="false" nullable="true" ordinalPosition="6" size="23" type="TIMESTAMP"/>
+        <column name="AGENDA_STOP" decimalDigits="10" autoIncrement="false" nullable="true" ordinalPosition="7" size="23" type="TIMESTAMP"/>
+        <column name="MAIL_SEND" decimalDigits="10" autoIncrement="false" nullable="true" ordinalPosition="8" size="23" type="TIMESTAMP"/>
+        <column name="MAIL_START" decimalDigits="10" autoIncrement="false" nullable="true" ordinalPosition="9" size="23" type="TIMESTAMP"/>
+        <column name="MAIL_STOP" decimalDigits="10" autoIncrement="false" nullable="true" ordinalPosition="10" size="23" type="TIMESTAMP"/>
+        <column name="MANAGER" decimalDigits="0" autoIncrement="false" nullable="true" ordinalPosition="11" size="255" type="VARCHAR"/>
+        <column name="WORKSHOP_NR" decimalDigits="0" autoIncrement="false" nullable="false" ordinalPosition="12" size="10" type="INTEGER"/>
+        <column name="EVENTTYPE_ID" decimalDigits="0" autoIncrement="false" nullable="true" ordinalPosition="13" size="19" type="BIGINT"/>
+      </columns>
+      <indexes>
+        <indexe columnName="ID" indexName="PRIMARY_KEY_C" nonUnique="false"/>
+      </indexes>
+      <importedKeys>
+        <importedKey fkColumnName="EVENTTYPE_ID" fkName="VAR_EVENT_FK_1" pkColumnName="ID" pkTableName="EVENTTYPE"/>
+      </importedKeys>
+      <primaryKeys>
+        <primaryKey>ID</primaryKey>
+      </primaryKeys>
+    </table>
+  </tables>
+</metadata>
